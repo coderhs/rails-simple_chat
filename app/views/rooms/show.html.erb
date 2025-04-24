@@ -1,0 +1,31 @@
+<div class="container mx-auto p-4 h-screen flex flex-col">
+  <h1 class="text-2xl font-bold mb-4 text-center">Simple Chat Room</h1>
+
+  <%# Div to hold incoming messages %>
+  <div
+    id="messages"
+    class="flex-grow overflow-y-auto border rounded p-4 mb-4 bg-gray-50"
+  >
+    <%# Render existing messages %> <%= render @messages %>
+  </div>
+
+  <%# Message input form %>
+  <form id="message-form" class="flex">
+    <input
+      type="text"
+      id="message_content"
+      placeholder="Type your message..."
+      class="flex-grow border rounded-l px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      autocomplete="off"
+    />
+    <button
+      type="submit"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r"
+    >
+      Send
+    </button>
+  </form>
+</div>
+
+<%# Add data attribute for Action Cable channel %>
+<div data-controller="room" data-room-channel-id-value="room_channel"></div>

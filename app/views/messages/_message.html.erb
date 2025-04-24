@@ -1,0 +1,16 @@
+<%# app/views/messages/_message.html.erb %>
+<div class="message mb-2 p-2 border-b border-gray-200">
+  <%# Display User ID as a prefix (truncated) %> <%# Use safe navigation (&.) in
+  case user_id is nil for older messages %>
+  <strong class="text-indigo-600 mr-2 font-medium"
+    ><%= message.user_id&.truncate(8, omission: '') %>:</strong
+  >
+
+  <%# Display message content %>
+  <span class="text-gray-800"><%= message.content %></span>
+
+  <%# Display timestamp %>
+  <span class="text-xs text-gray-500 ml-2"
+    ><%= message.created_at.strftime("%H:%M:%S") %></span
+  >
+</div>
